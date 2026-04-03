@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abdul | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+
+      background: linear-gradient(-45deg, #0f172a, #1e3a8a, #9333ea, #0ea5e9);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    nav {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .services, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* 🔥 FULL WIDTH FIX */
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(147, 51, 234, 0.6);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+    }
+
+    .lightbox img {
+      display: block;
+      margin: auto;
+      max-width: 90%;
+      margin-top: 60px;
+    }
+
+    .lightbox:target {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mohammed</h1>
+  <p>Photo Editor | Video Editor | Social Media Manager</p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Work</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2>About Me</h2>
+  
+    <p>  Hi, I'm Mohammed. I Edit and Create High-Quality Photo and Videos for Small Brands helping them to grow. </p>
+      <p>I also help them in managing their Social Media Account by posting regular Reels, Ads, Story, Posts etc. </p>
+</section>
+
+<section id="services">
+  <h2>My Services</h2>
+  <div class="services">
+    <div class="card"><h3>Photo Editing</h3></div>
+    <div class="card"><h3>Social Media Management</h3></div>
+    <div class="card"><h3>Video Editing</h3></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>My Work</h2>
+  <div class="projects">
+
+    <!-- 📸 PHOTO (FULL WIDTH) -->
+    <div class="card full-width">
+      <h3>Photo Editing Project</h3>
+
+      <div class="image-grid">
+        <a href="#img1"><img src="images/photo1.jpg"></a>
+        <a href="#img2"><img src="images/photo2.jpg"></a>
+        <a href="#img3"><img src="images/photo3.jpg"></a>
+        <a href="#img4"><img src="images/photo4.jpg"></a>
+        <a href="#img5"><img src="images/photo5.jpg"></a>
+        <a href="#img6"><img src="images/photo6.jpg"></a>
+      </div>
+    </div>
+
+    <!-- 🎥 VIDEO (FULL WIDTH MATCH) -->
+    <div class="card full-width">
+      <h3>Video Editing Project</h3>
+      <video controls>
+        <source src="videos/sample.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="img1" class="lightbox"><a href="#"><img src="images/photo1.jpg"></a></div>
+<div id="img2" class="lightbox"><a href="#"><img src="images/photo2.jpg"></a></div>
+<div id="img3" class="lightbox"><a href="#"><img src="images/photo3.jpg"></a></div>
+<div id="img4" class="lightbox"><a href="#"><img src="images/photo4.jpg"></a></div>
+<div id="img5" class="lightbox"><a href="#"><img src="images/photo5.jpg"></a></div>
+<div id="img6" class="lightbox"><a href="#"><img src="images/photo6.jpg"></a></div>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Email: Syedaunisa786@gmail.com</p>
+  <p>Instagram: yourusername</p>
+  <p>WhatsApp: +91 7207864450</p>
+</section>
+
+<footer>
+  <p>© 2026 Mohammed | Portfolio</p>
+</footer>
+
+</body>
+</html>
