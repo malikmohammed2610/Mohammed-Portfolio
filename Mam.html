@@ -1,216 +1,394 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Revelation - Mohammed</title>
+<title>Abdul | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 
-body{
-  background:linear-gradient(135deg,#1e3c72,#2a5298);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  perspective:2000px;
+/* GLOBAL */
+html {
+  scroll-behavior: smooth;
 }
 
-.page{
-  width:794px;
-  height:1123px;
-  position:relative;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #9333ea, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
 }
 
-.cover{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#cfe8ff;
-  transform-origin:left;
-  transition:transform 1.5s ease, background 1s ease;
-  z-index:5;
-  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.flip .cover{
-  transform:rotateY(-180deg);
-  background:#cfe8ff; /* backside color same as front */
+/* HEADER */
+header {
+  text-align: center;
+  padding: 80px 20px;
 }
 
-.name{
-  position:absolute;
-  top:35%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-family:'Alex Brush',cursive;
-  font-size:110px;
-  color:#1e3c72;
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
 }
 
-.banner{
-  position:absolute;
-  top:65%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:60%;
-  height:80px;
-  background:linear-gradient(90deg,gold,#c9a000);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-size:30px;
-  color:#000;
-  box-shadow:0 0 25px rgba(255,215,0,0.6);
-  position:relative;
-  overflow:hidden;
+nav a {
+  color: white;
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-.banner-watermark{
-  position:absolute;
-  font-size:70px;
-  color:rgba(0,0,0,0.08);
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+nav a.active {
+  background: #9333ea;
 }
 
-.ribbon{
-  position:absolute;
-  top:50%;
-  left:0;
-  width:100%;
-  height:18px;
-  transform:translateY(-50%);
-  z-index:6;
-
-  /* fabric ribbon (no visible box edges) */
-  background:
-    linear-gradient(90deg,#6e0000,#ff2a2a,#6e0000),
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.08) 0px,
-      rgba(255,255,255,0.08) 2px,
-      transparent 2px,
-      transparent 6px
-    );
-  background-blend-mode:overlay;
-
-  /* remove hard edges */
-  box-shadow:none;
-  border-radius:0;
-
-  /* soft edge blending */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+nav a:hover {
+  background: rgba(255,255,255,0.2);
 }
 
-/* Ribbon split effect */
-.cut .ribbon{
-  background:transparent;
+/* SECTIONS */
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  width: 90%;
+  margin: auto;
 }
 
-.ribbon::before,
-.ribbon::after{
-  content:"";
-  position:absolute;
-  width:50%;
-  height:100%;
-  background:inherit;
-  top:0;
-  transition:transform 0.6s ease;
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.ribbon::before{left:0}
-.ribbon::after{right:0}
-
-.cut .ribbon::before{
-  transform:translateX(-100%);
+.service-card {
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.4s;
+  backdrop-filter: blur(12px);
 }
 
-.cut .ribbon::after{
-  transform:translateX(100%);
+.service-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(147,51,234,0.6);
 }
 
-/* Bow image (seamless integration) */
-.bow{
-  position:absolute;
-  top:52%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:180px;
-  cursor:pointer;
-  z-index:7;
-  transition:transform 0.4s ease, opacity 0.4s ease;
-
-  mix-blend-mode:multiply;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.4));
+/* PROJECTS */
+.projects {
+  display: grid;
+  gap: 20px;
 }
 
-/* Bow split effect */
-.cut .bow{
-  transform:translate(-50%,-50%) scale(0.8);
-  opacity:0;
+.full-width {
+  grid-column: 1 / -1;
 }
 
-
-
-
-/* Second page styles */
-.portfolio{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#fff;
-  z-index:1;
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 20px;
 }
 
-iframe{
-  width:100%;
-  height:100%;
-  border:none;
+/* IMAGE GRID */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.image-grid img:hover {
+  transform: scale(1.05);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+video {
+  border-radius: 10px;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.left { left: 20px; }
+.right { right: 20px; }
+
+/* SCROLL ANIMATION */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 📱 RESPONSIVE DESIGN */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  header {
+    padding: 50px 15px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    margin: 8px;
+    font-size: 14px;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 { font-size: 26px; }
+  h2 { font-size: 22px; }
+  p { font-size: 14px; }
 }
 
 </style>
 </head>
+
 <body>
 
-<div class="page" id="page">
+<header class="hidden">
+<h1>Mohammed</h1>
+<p>Photo Editor | Video Editor | Social Media Manager</p>
+</header>
 
-  
+<nav>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#projects">Work</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <div class="cover">
-    <div class="name">Mohammed</div>
-    <div class="banner">Revelation<span class="banner-watermark">Revelation</span></div>
+<section id="about" class="hidden">
+<h2>About Me</h2>
+<p>I am a student curently pursuing my Grade 10th. I am a professional Photo & Video Editor. I am also an efficient Social Media Manager. I help Brands and Individuals to grow their Businesses.</p>
+</section>
 
-    <!-- Ribbon + Bow INSIDE page -->
-    <div class="ribbon"></div>
-    <img src="bow.png" class="bow" onclick="openPage()">
-  </div>
+<section id="services" class="hidden">
+<h2>My Services</h2>
 
-  <!-- Second Page (Portfolio) -->
-  <div class="portfolio">
-    <iframe src="index.html"></iframe>
-  </div>
+<div class="services">
+<a href="#photo-project" class="service-card">
+<h3>Photo Editing</h3>
+</a>
 
+<a href="#projects" class="service-card">
+<h3>Video Editing</h3>
+</a>
+
+<a href="#contact" class="service-card">
+<h3>Social Media Management</h3>
+</a>
+</div>
+</section>
+
+<section id="projects" class="hidden">
+<h2>My Work</h2>
+
+<div class="projects">
+
+<div class="card full-width" id="photo-project">
+<h3>Photo Editing Project</h3>
+
+<div class="image-grid">
+<img src="images/photo1.jpg" onclick="openLightbox(0)">
+<img src="images/photo2.jpg" onclick="openLightbox(1)">
+<img src="images/photo3.jpg" onclick="openLightbox(2)">
+<img src="images/photo4.jpg" onclick="openLightbox(3)">
+<img src="images/photo5.jpg" onclick="openLightbox(4)">
+<img src="images/photo6.jpg" onclick="openLightbox(5)">
+</div>
 </div>
 
-<script>
-function openPage(){
-  const page = document.getElementById('page');
-  page.classList.add('cut');
+<div class="card full-width">
+<h3>Video Editing Project</h3>
+<video controls>
+<source src="videos/sample.mp4">
+</video>
+</div>
 
-  setTimeout(()=>{
-    page.classList.add('flip');
-  },600);
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<span class="arrow left" onclick="prevImage(event)">❮</span>
+<img id="lightbox-img">
+<span class="arrow right" onclick="nextImage(event)">❯</span>
+</div>
+
+<section id="contact" class="hidden">
+<h2>Contact</h2>
+<p>Email: malik.mohammed2610@gmail.com</p>
+<p>WhatsApp: +91 63000 43087</p>
+</section>
+
+<footer>
+<p>© 2026 Mohammed</p>
+</footer>
+
+<script>
+
+/* LIGHTBOX */
+const images = [
+"images/photo1.jpg",
+"images/photo2.jpg",
+"images/photo3.jpg",
+"images/photo4.jpg",
+"images/photo5.jpg",
+"images/photo6.jpg"
+];
+
+let current = 0;
+
+function openLightbox(i){
+  current = i;
+  document.getElementById("lightbox").classList.add("active");
+  document.getElementById("lightbox-img").src = images[i];
 }
+
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("active");
+}
+
+function nextImage(e){
+  e.stopPropagation();
+  current = (current+1)%images.length;
+  document.getElementById("lightbox-img").src = images[current];
+}
+
+function prevImage(e){
+  e.stopPropagation();
+  current = (current-1+images.length)%images.length;
+  document.getElementById("lightbox-img").src = images[current];
+}
+
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+  observer.observe(el);
+});
+
+/* ACTIVE NAV */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", ()=>{
+  let currentSection = "";
+
+  sections.forEach(sec=>{
+    const sectionTop = sec.offsetTop - 120;
+    if(pageYOffset >= sectionTop){
+      currentSection = sec.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link=>{
+    link.classList.remove("active");
+    if(link.getAttribute("href") === "#" + currentSection){
+      link.classList.add("active");
+    }
+  });
+});
+
 </script>
 
 </body>
